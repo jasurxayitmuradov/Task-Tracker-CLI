@@ -2,22 +2,7 @@
 import json
 import os
 import sys
-
-FILE_NAME = "tasks.json"
-
-def ensure_file():
-    if not os.path.exists(FILE_NAME):
-        with open(FILE_NAME, "w") as f:
-            json.dump([], f, indent=4)
-
-def load_tasks():
-    ensure_file()
-    try:
-        with open(FILE_NAME, "r") as f:
-            data = json.load(f)
-            return data if isinstance(data, list) else []
-    except (json.JSONDecodeError, ValueError):
-        return []
+from main import TASKS ,  FILE_NAME
 
 def save_tasks(tasks):
     with open(FILE_NAME, "w") as f:
@@ -34,7 +19,7 @@ def add_task(description):
     """
     Adds a new task to tasks.json with status 'todo'.
     """
-    tasks = load_tasks()
+    tasks = TASKS
     status_options = input("Choose taks's status\n1)todo 2)in-progres:")
 
     while int(status_options) != 1 and int(status_options) != 2:
