@@ -2,7 +2,7 @@
 import json
 import os
 import sys
-from storage import TASKS , FILE_NAME
+from storage import load_tasks , FILE_NAME
 
 def save_tasks(tasks):
     with open(FILE_NAME, "w") as f:
@@ -19,7 +19,7 @@ def add_task(new_task):
     """
     Adds a new task to tasks.json with status 'todo'.
     """
-    tasks = TASKS
+    tasks = load_tasks()
     status_options = input("Choose taks's status\n1)todo 2)in-progres: ")
     id = get_next_id(tasks)
     while int(status_options) != 1 and int(status_options) != 2:

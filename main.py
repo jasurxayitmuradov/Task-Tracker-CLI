@@ -1,5 +1,8 @@
 import sys
 from Add import add_task
+from Delete import delete_task_by_id
+from Mark import mark_task_by_id
+from Update import update_task_by_id
 terminal_commands = sys.argv
 
 USAGE_TEXT = """
@@ -51,12 +54,33 @@ Notes:
   - Task id must be a number (integer).
   - Wrap descriptions in quotes if they contain spaces.
 """
-print(terminal_commands)
+# print(terminal_commands)
 if len(terminal_commands) < 3:
     print(USAGE_TEXT)
     sys.exit(1)
-    
+#add
 if terminal_commands[1] == 'add':
     add_task(terminal_commands[2])
 
+#delete   
+if terminal_commands[1] == 'delete':
+    id = int(terminal_commands[2])
+    delete_task_by_id(id)
+
+
+#mark-in-progress
+if terminal_commands[1] == 'mark-in-progress':
+    id = int(terminal_commands[2])
+    mark_task_by_id(id, 'in-progress')
+    
+#mark-done
+if terminal_commands[1] == 'mark-done':
+    id = int(terminal_commands[2])
+    mark_task_by_id(id, 'done')
+
+#update
+if terminal_commands[1] == 'update':
+    id = int(terminal_commands[2])
+    new_note = terminal_commands[3]
+    update_task_by_id(id, new_note)
 

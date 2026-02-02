@@ -15,5 +15,3 @@ def load_tasks():
     except (json.JSONDecodeError, ValueError):
         return []
 
-TASKS = load_tasks()
-
