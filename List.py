@@ -12,42 +12,49 @@ def print_tasks(tasks):
         print(f"[{task['id']}] {task['description']}  --->  {task['status']}")
 
 
-# 1) List all tasks
+# List all tasks
 def list_all_tasks():
     tasks = load_tasks()
     print_tasks(tasks)
 
 
-# # 2) List all tasks that are done
-# def list_done_tasks():
-#     tasks = TASKS
-#     done = []
-#     for t in tasks:
-#         if t['status'] == 'done':
-#             done.append(t)
-#     print_tasks(done)
+# List all tasks that are done
+def list_done_tasks():
+    tasks = load_tasks()
+    done = []
+    for t in tasks:
+        if t['status'] == 'done':
+            done.append(t)
+    print_tasks(done)
+
+# List all tasks that are todo
+def list_todo_tasks():
+    tasks = load_tasks()
+    todo = []
+    for t in tasks:
+        if t['status'] == 'todo':
+            todo.append(t)
+    print_tasks(todo)
 
 
-# # 3) List all tasks that are not done (todo + in-progress)
-# def list_not_done_tasks():
-#     tasks = TASKS
-#     not_done = []
-#     for t in tasks:
-#         if t['status'] == 'todo' or t['status'] == 'in-progress':
-#             not_done.append(t)
-#     print_tasks(not_done)
+# List all tasks that are not done (todo + in-progress)
+def list_not_done_tasks():
+    tasks = load_tasks()
+    not_done = []
+    for t in tasks:
+        if t['status'] == 'todo' or t['status'] == 'in-progress':
+            not_done.append(t)
+    print_tasks(not_done)
 
 
-# # 4) List all tasks that are in progress
-# def list_in_progress_tasks():
-#     tasks = TASKS
-#     in_progress = []
-#     for t in tasks:
-#         if t["status"] == "in-progress":
-#             in_progress.append(t)
-#     print_tasks(in_progress)
+# List all tasks that are in progress
+def list_in_progress_tasks():
+    tasks = load_tasks()
+    in_progress = []
+    for t in tasks:
+        if t["status"] == "in-progress":
+            in_progress.append(t)
+    print_tasks(in_progress)
 
 
-# list_done_tasks()
-# list_not_done_tasks()
-# list_in_progress_tasks()
+

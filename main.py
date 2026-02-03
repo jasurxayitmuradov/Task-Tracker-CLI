@@ -3,7 +3,7 @@ from Add import add_task
 from Delete import delete_task_by_id
 from Mark import mark_task_by_id
 from Update import update_task_by_id
-from List import list_all_tasks , list_done_tasks
+from List import list_all_tasks , list_done_tasks , list_todo_tasks , list_in_progress_tasks , list_not_done_tasks
 terminal_commands = sys.argv
 
 USAGE_TEXT = """
@@ -86,5 +86,21 @@ if terminal_commands[1] == 'update':
     update_task_by_id(id, new_note)
 
 #list
-if terminal_commands[1] == 'list':
+if terminal_commands[1] == 'list' and len(terminal_commands) == 2:
   list_all_tasks()
+
+#list done
+if terminal_commands[1] == 'list' and len(terminal_commands) == 3 and terminal_commands[2] == 'done':
+  list_done_tasks()
+
+#list done
+if terminal_commands[1] == 'list' and len(terminal_commands) == 3 and terminal_commands[2] == 'todo':
+  list_todo_tasks()
+
+#list in-progress
+if terminal_commands[1] == 'list' and len(terminal_commands) == 3 and terminal_commands[2] == 'in-progress':
+  list_in_progress_tasks()
+
+#list in-progress
+if terminal_commands[1] == 'list' and len(terminal_commands) == 3 and terminal_commands[2] == 'notdone':
+  list_not_done_tasks()
