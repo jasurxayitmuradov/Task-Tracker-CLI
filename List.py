@@ -1,7 +1,7 @@
 import json
 import os
 import sys
-from storage import TASKS , FILE_NAME
+from storage import load_tasks , FILE_NAME
 
 def print_tasks(tasks):
     if len(tasks) == 0:
@@ -9,12 +9,13 @@ def print_tasks(tasks):
         return
 
     for task in tasks:
-        print(f"[{task['id']}] {task['title']}  --->  {task['status']}")
+        print(f"[{task['id']}] {task['description']}  --->  {task['status']}")
 
 
 # 1) List all tasks
 def list_all_tasks():
-    print_tasks(TASKS)
+    tasks = load_tasks()
+    print_tasks(tasks)
 
 
 # # 2) List all tasks that are done
@@ -46,7 +47,7 @@ def list_all_tasks():
 #             in_progress.append(t)
 #     print_tasks(in_progress)
 
-list_all_tasks()
+
 # list_done_tasks()
 # list_not_done_tasks()
 # list_in_progress_tasks()

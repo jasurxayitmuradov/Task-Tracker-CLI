@@ -14,7 +14,7 @@ def delete_task_by_id(task_id):
     if len(new_tasks) == len(tasks):
         print(f"Task not found: id={task_id}")
         return
-
+    
     with open(FILE_NAME , "w") as f:
         json.dump(new_tasks , f , indent=4)
 

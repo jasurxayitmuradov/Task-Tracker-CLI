@@ -3,6 +3,7 @@ from Add import add_task
 from Delete import delete_task_by_id
 from Mark import mark_task_by_id
 from Update import update_task_by_id
+from List import list_all_tasks , list_done_tasks
 terminal_commands = sys.argv
 
 USAGE_TEXT = """
@@ -55,7 +56,7 @@ Notes:
   - Wrap descriptions in quotes if they contain spaces.
 """
 # print(terminal_commands)
-if len(terminal_commands) < 3:
+if len(terminal_commands) < 2:
     print(USAGE_TEXT)
     sys.exit(1)
 #add
@@ -84,3 +85,6 @@ if terminal_commands[1] == 'update':
     new_note = terminal_commands[3]
     update_task_by_id(id, new_note)
 
+#list
+if terminal_commands[1] == 'list':
+  list_all_tasks()
