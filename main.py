@@ -1,106 +1,63 @@
-import sys
+import argparse
 from Add import add_task
 from Delete import delete_task_by_id
 from Mark import mark_task_by_id
 from Update import update_task_by_id
 from List import list_all_tasks , list_done_tasks , list_todo_tasks , list_in_progress_tasks , list_not_done_tasks
-terminal_commands = sys.argv
+parser = argparse.ArgumentParser(
+    prog='tasks',
+    description='tasks cli porgram helps you arrange your tasks and it is only for coders who likes terminal command line',
+    epilog="Example: tasks add \"Buy milk\"",
+    usage="tasks <command> [options]\n\nCommands:\n list\n delete <id>"
+)
 
-USAGE_TEXT = """
-Task Tracker CLI
+sub = parser.add_subparsers(dest="command",required=True)
 
-Usage:
-  task-cli <command> [arguments]
+# tasks add "text"
+p_add = sub.add_parser("add")
+p_add.add_argument("text")
 
-Commands:
-  add "<description>"
-      Add a new task.
-      Example:
-        task-cli add "Buy groceries"
+# tasks update <id> "text"clear
+p_update = sub.add_parser("update")
+p_update.add_argument("id", type=int)
+p_update.add_argument("text")
 
-  update <id> "<new_description>"
-      Update task description by id.
-      Example:
-        task-cli update 1 "Buy groceries and cook dinner"
+# tasks delete <id>
+p_delete = sub.add_parser("delete")
+p_delete.add_argument("id", type=int)
 
-  delete <id>
-      Delete a task by id.
-      Example:
-        task-cli delete 1
+# tasks list [filter]
+p_list = sub.add_parser("list")
+p_list.add_argument("filter", nargs="?", choices=["all", "done", "todo", "in-progress", "notdone"], default="all")
 
-  mark-in-progress <id>
-      Mark a task as in-progress.
-      Example:
-        task-cli mark-in-progress 1
+# tasks mark-in-progress <id>
+p_mip = sub.add_parser("mark-in-progress")
+p_mip.add_argument("id", type=int)
 
-  mark-done <id>
-      Mark a task as done.
-      Example:
-        task-cli mark-done 1
+# tasks mark-done <id>
+p_done = sub.add_parser("mark-done")
+p_done.add_argument("id", type=int)
 
-  list
-      List all tasks.
-      Example:
-        task-cli list
+args = parser.parse_args()
 
-  list <status>
-      List tasks by status.
-      Status values: todo, in-progress, done
-      Examples:
-        task-cli list todo
-        task-cli list in-progress
-        task-cli list done
-
-Notes:
-  - Task id must be a number (integer).
-  - Wrap descriptions in quotes if they contain spaces.
-"""
-# print(terminal_commands)
-if len(terminal_commands) < 2:
-    print(USAGE_TEXT)
-    sys.exit(1)
-#add
-if terminal_commands[1] == 'add':
-    add_task(terminal_commands[2])
-
-#delete   
-if terminal_commands[1] == 'delete':
-    id = int(terminal_commands[2])
-    delete_task_by_id(id)
-
-
-#mark-in-progress
-if terminal_commands[1] == 'mark-in-progress':
-    id = int(terminal_commands[2])
-    mark_task_by_id(id, 'in-progress')
-    
-#mark-done
-if terminal_commands[1] == 'mark-done':
-    id = int(terminal_commands[2])
-    mark_task_by_id(id, 'done')
-
-#update
-if terminal_commands[1] == 'update':
-    id = int(terminal_commands[2])
-    new_note = terminal_commands[3]
-    update_task_by_id(id, new_note)
-
-#list
-if terminal_commands[1] == 'list' and len(terminal_commands) == 2:
-  list_all_tasks()
-
-#list done
-if terminal_commands[1] == 'list' and len(terminal_commands) == 3 and terminal_commands[2] == 'done':
-  list_done_tasks()
-
-#list done
-if terminal_commands[1] == 'list' and len(terminal_commands) == 3 and terminal_commands[2] == 'todo':
-  list_todo_tasks()
-
-#list in-progress
-if terminal_commands[1] == 'list' and len(terminal_commands) == 3 and terminal_commands[2] == 'in-progress':
-  list_in_progress_tasks()
-
-#list in-progress
-if terminal_commands[1] == 'list' and len(terminal_commands) == 3 and terminal_commands[2] == 'notdone':
-  list_not_done_tasks()
+if args.command == 'add':
+    add_task(args.text)
+elif args.command == 'update':
+    update_task_by_id(args.id,args.text)
+elif args.command == 'delete':
+    delete_task_by_id(args.id)
+elif args.command == 'list':
+    if args.filter == None or args.filter == 'all':
+        list_all_tasks()
+    elif args.filter == 'done':
+        list_done_tasks()
+    elif args.filter == 'todo':
+        list_todo_tasks()
+    elif args.filter == 'in-progress':
+        list_in_progress_tasks()
+    elif args.filter == 'notdone':
+        list_not_done_tasks()
+elif args.command == 'mark-in-progress':
+    mark_task_by_id(args.id , 'in-progres')
+elif args.command == 'mark-done':
+    mark_task_by_id(args.id , 'done')
