@@ -4,7 +4,8 @@ A fast and simple **command-line task manager** built for developers who live in
 Manage your daily tasks directly from your shell with clean commands and zero distractions.
 
 ---
-
+## Project URL
+https://github.com/jasurxayitmuradov/Task-Tracker-CLI
 ## ✨ Features
 
 * Add, update, delete tasks
