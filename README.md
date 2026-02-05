@@ -19,7 +19,7 @@ Manage your daily tasks directly from your shell with clean commands and zero di
 
 ## 📦 Installation
 
-### Install from PyPI (after publishing)
+### Install from PyPI 
 
 ```bash
 pip install x-tasks
