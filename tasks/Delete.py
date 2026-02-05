@@ -1,5 +1,5 @@
 import json
-from storage import load_tasks , FILE_NAME
+from .storage import load_tasks , FILE_NAME
 
 
 def delete_task_by_id(task_id):

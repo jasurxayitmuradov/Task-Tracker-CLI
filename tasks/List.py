@@ -1,7 +1,7 @@
 import json
 import os
 import sys
-from storage import load_tasks , FILE_NAME
+from .storage import load_tasks , FILE_NAME
 
 def print_tasks(tasks):
     if len(tasks) == 0:

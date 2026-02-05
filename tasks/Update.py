@@ -1,6 +1,6 @@
 # update tasks by id
 import json
-from storage import load_tasks , FILE_NAME
+from .storage import load_tasks , FILE_NAME
 
 def update_task_by_id(tasks_id , new_note):
     tasks = load_tasks()

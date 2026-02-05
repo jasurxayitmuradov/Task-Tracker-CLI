@@ -1,5 +1,5 @@
 import json
-from storage import load_tasks , FILE_NAME
+from .storage import load_tasks , FILE_NAME
 
 # mark taks by id
 #done or in-progres

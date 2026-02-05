@@ -2,7 +2,7 @@
 import json
 import os
 import sys
-from storage import load_tasks , FILE_NAME
+from .storage import load_tasks , FILE_NAME
 
 def save_tasks(tasks):
     with open(FILE_NAME, "w") as f:
