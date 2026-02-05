@@ -20,23 +20,28 @@ def add_task(new_task):
     Adds a new task to tasks.json with status 'todo'.
     """
     tasks = load_tasks()
-    status_options = input("Choose taks's status\n1)todo 2)in-progres: ")
-    id = get_next_id(tasks)
-    while int(status_options) != 1 and int(status_options) != 2:
-        status_options = input("You have to choose 1 or 2: ")
-    
-    status = "todo"
-    if status_options == 2:
-        status = "in-progres"
+
+    while True:
+
+        status_option = input("Choose task's status\n1) todo  2) in-progress: ").strip()
+
+        if status_option in ("1" , "2"):
+            break
+        
+        print("You have to choose 1 or 2.")
+
+    status = "todo" if status_option == "1" else "in-progress"
+    task_id = get_next_id(tasks)
+
     new_task = {
-        "id": id,
+        "id": task_id,
         "description": new_task,
         "status": status
     }
 
     tasks.append(new_task)
     save_tasks(tasks)
-    print(f"Task added successfully (ID: {id})")
+    print(f"Task added successfully (ID: {task_id})")
 
 
 
