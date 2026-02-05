@@ -1,6 +1,6 @@
 # 🚀 Tasks CLI — Minimalist Terminal Task Manager
 
-Project URL: https://github.com/jasurxayitmuradov/Task-Tracker-CLI
+Project URL: [https://github.com/jasurxayitmuradov/Task-Tracker-CLI](https://roadmap.sh/projects/task-tracker)
 
 A fast and simple command-line task manager built for developers who live in the terminal.
 
