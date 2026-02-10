@@ -66,6 +66,11 @@ tasks update 1 "Buy milk and eggs"
 tasks delete 1
 ```
 
+### Clear all tasks
+```bash
+tasks clear
+```
+
 ### Mark task status
 
 ```bash
