@@ -2,6 +2,7 @@ import json
 import os
 import sys
 from .storage import load_tasks , FILE_NAME
+from rich import print
 
 def print_tasks(tasks):
     if len(tasks) == 0:
@@ -9,11 +10,11 @@ def print_tasks(tasks):
         return
 
     for task in tasks:
-        print(f"[{task['id']}] {task['description']}  --->  {task['status']}")
+        print(f"[blue][{task['id']}][/blue] [bold][green]{task['description']}[/green][/bold]  --->  [yellow]{task['status']}[/yellow]")
 
 
 # List all tasks
-def list_all_tasks():
+def list_all_tasks():[blue]
     tasks = load_tasks()
     print_tasks(tasks)
 
