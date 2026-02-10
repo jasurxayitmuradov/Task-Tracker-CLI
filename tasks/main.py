@@ -11,6 +11,7 @@ from .List import (
     list_in_progress_tasks,
     list_not_done_tasks,
 )
+from .clear_tasks import clear_tasks
 
 def main():
     parser = argparse.ArgumentParser(
@@ -43,7 +44,9 @@ def main():
         choices=["all", "done", "todo", "in-progress", "notdone"],
         default="all",
     )
-
+    #taksks clear all
+    p_clear = sub.add_parser('clear')
+    
     # tasks mark-in-progress <id>
     p_mip = sub.add_parser("mark-in-progress")
     p_mip.add_argument("id", type=int)
@@ -80,7 +83,8 @@ def main():
 
     elif args.command == "mark-done":
         mark_task_by_id(args.id, "done")
-
+    elif args.command == 'clear':
+        clear_tasks()
 
 if __name__ == "__main__":
     main()
