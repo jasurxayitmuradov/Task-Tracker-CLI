@@ -22,14 +22,14 @@ Manage your daily tasks directly from your shell with clean commands and zero di
 ### Install from PyPI (after publishing)
 
 ```bash
-pip install tasks-cli
+pip install x-tasks
 ```
 
 ### Or install locally (development mode)
 
 ```bash
-git clone https://github.com/yourusername/tasks-cli.git
-cd tasks-cli
+git clone https://github.com/jasurxayitmuradov/Task-Tracker-CLI.git
+cd Task-Tracker-CLI
 pip install -e .
 ```
 
